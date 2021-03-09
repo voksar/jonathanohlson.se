@@ -3,8 +3,9 @@ import os
 from datetime import timedelta
 from utils.misc import Json_Key
 
+#config for prod
 class ConfigProduction(object):
-    
+
     DEVELOPMENT = False
     DEBUG = False
     SECRET_KEY = os.environ.get('SECRET_KEY')
