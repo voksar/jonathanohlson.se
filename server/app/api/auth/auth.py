@@ -73,5 +73,5 @@ def check_admin(*args, **kwargs):
 #testroute
 @auth.route('/test')
 def test():
-    value = os.getenv('FLASK_APP')
+    value = os.getenv('FLASK_ENV')
     return {'msg': value}
