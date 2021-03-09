@@ -2,7 +2,7 @@ from main import app, bcrypt, cors
 
 import os
 
-from models import db
+#from models import db
 from models.user import User
 from models.tasks import Tasks
 
@@ -33,12 +33,12 @@ app.register_blueprint(admin)
 
 
 
-db.init_app(app)
+#db.init_app(app)
 cors.init_app(app)
 bcrypt.init_app(app)
 
 
-with app.app_context():
+#with app.app_context():
     db.create_all()
     if db.session.query(User).filter_by(username='voksar').count() < 1:
         db.session.add(User(
