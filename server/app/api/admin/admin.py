@@ -18,7 +18,7 @@ import json
 
 from utils.role_required import admin_required
 
-
+#create admin blueprint
 #create admin blueprint
 admin = Blueprint('admin', __name__, url_prefix='/api/admin')
 
