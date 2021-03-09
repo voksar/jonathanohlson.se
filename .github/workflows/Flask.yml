@@ -13,7 +13,6 @@ jobs:
   build:
 
     runs-on: self-hosted
-ported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v2
