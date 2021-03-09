@@ -71,6 +71,8 @@ def check_admin(*args, **kwargs):
     
     return {'msg': 'User is admin!', 'admin': True}, 200
 
+
+#testroute
 @auth.route('/test')
 def test():
     return {'msg':os.environ.get('FLASK_ENV')}
