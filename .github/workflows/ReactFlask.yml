@@ -6,6 +6,8 @@ name: ReactFlask
 on:
   push:
     branches: [ main ]
+    paths:
+      - '**.tsx'
 
 jobs:
   build:
