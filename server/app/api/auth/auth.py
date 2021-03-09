@@ -68,10 +68,3 @@ def check_valid():
 @admin_required()
 def check_admin(*args, **kwargs):
     return {'msg': 'User is admin!', 'admin': True}, 200
-
-
-#testroute
-@auth.route('/test')
-def test():
-    value = os.getenv('FLASK_ENV')
-    return {'msg': value}
