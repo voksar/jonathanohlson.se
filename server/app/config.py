@@ -19,19 +19,11 @@ class ConfigProduction(object):
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=24)
 
 class ConfigDevelopment(object):
-    def test_db_credentials():
-        with open(os.getcwd() + "/config.json", "r") as json_file:
-            json_data = json.load(json_file)
-        vals = []
-        vals.append(json_data['DB_TEST_USERNAME'])
-        vals.append(json_data['DB_TEST_PASSWORD'])
-        return vals
-
     
     DEVELOPMENT = True
     DEBUG = True
     SECRET_KEY = "DEV123"
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@192.168.1.150:3306/JONWEBDB_TEST'.format(test_db_credentials()[0], test_db_credentials()[1])
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://0:0@192.168.1.150:3306/JONWEBDB_TEST'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     CORS_HEADERS = 'Content-Type'
 
