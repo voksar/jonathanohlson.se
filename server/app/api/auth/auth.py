@@ -16,7 +16,7 @@ from models.user import User
 
 from utils.role_required import admin_required
 
-
+import os
 
 auth = Blueprint('auth', __name__, url_prefix='/api/auth')
 
