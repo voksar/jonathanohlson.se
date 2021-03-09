@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 
 const Home : React.FC = () => {
-    const [username, setUsername] = useState<string>("-");
+    const [username, setUsername] = useState<string>("");
     return (
         <h1>
             {username}
