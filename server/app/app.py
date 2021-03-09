@@ -33,7 +33,7 @@ app.register_blueprint(admin)
 
 
 
-db.init_app(app)
+#db.init_app(app)
 cors.init_app(app)
 bcrypt.init_app(app)
 
