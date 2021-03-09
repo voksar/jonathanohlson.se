@@ -37,8 +37,8 @@ app.register_blueprint(admin)
 cors.init_app(app)
 bcrypt.init_app(app)
 
-
-#with app.app_context():
+"""
+with app.app_context():
     db.create_all()
     if db.session.query(User).filter_by(username='voksar').count() < 1:
         db.session.add(User(
@@ -46,4 +46,4 @@ bcrypt.init_app(app)
           password=bcrypt.generate_password_hash("123"),
           roles='admin'
             ))
-    db.session.commit()
+    db.session.commit()"""
