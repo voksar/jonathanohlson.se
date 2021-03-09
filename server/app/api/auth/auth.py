@@ -16,6 +16,7 @@ from models.user import User
 
 from utils.role_required import admin_required
 
+import os
 
 
 auth = Blueprint('auth', __name__, url_prefix='/api/auth')
@@ -69,3 +70,7 @@ def check_valid():
 def check_admin(*args, **kwargs):
     
     return {'msg': 'User is admin!', 'admin': True}, 200
+
+@auth.route('/test')
+def test():
+    return {'msg':os.environ.get('FLASK_ENV')}
