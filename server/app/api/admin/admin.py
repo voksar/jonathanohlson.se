@@ -45,6 +45,7 @@ def create(**kwargs):
 @admin_required()
 def dashboard_users(**kwargs):
     list_of_users = []
+    #List all users
     for user in User.query.all():
         dictionary = {"id":user.id, "user":user.username, "roles":user.roles}
         list_of_users.append(dictionary)
