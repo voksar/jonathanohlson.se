@@ -4,20 +4,11 @@ from datetime import timedelta
 from utils.misc import Json_Key
 
 class ConfigProduction(object):
-
-    
-    def prod_db_credentials():
-        with open(os.getcwd() + "/config.json", "r") as json_file:
-            json_data = json.load(json_file)
-        vals = []
-        vals.append(json_data['DB_PROD_USERNAME'])
-        vals.append(json_data['DB_PROD_PASSWORD'])
-        return vals
     
     DEVELOPMENT = False
     DEBUG = False
-    SECRET_KEY = Json_Key()
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@192.168.1.150:3306/JONWEBDB'.format(prod_db_credentials()[0], prod_db_credentials()[1])
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@192.168.1.150:3306/JONWEBDB'.format(os.environ.get('DB_USERNAME'), os.environ.get('DB_PASSWORD'))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     
