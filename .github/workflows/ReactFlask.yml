@@ -28,3 +28,4 @@ jobs:
       env: 
         CI: false
     - run: cp -a /home/administrator/github-actions/_work/jonathanohlson.se/jonathanohlson.se/build/. /var/www/build
+    - run: cp -a /home/administrator/github-actions/_work/jonathanohlson.se/jonathanohlson.se/server/. /var/servcer/api-service/
