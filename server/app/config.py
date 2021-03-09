@@ -15,7 +15,6 @@ class ConfigProduction(object):
     
     #JWT Variables
     JWT_TOKEN_LOCATION = ["cookies"]
-    JWT_SECRET_KEY = Json_Key()
     JWT_COOKIE_SECURE = True
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=24)
 
