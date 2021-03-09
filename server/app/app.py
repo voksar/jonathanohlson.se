@@ -16,6 +16,7 @@ from flask_jwt_extended import JWTManager
 
 
 environment = os.environ.get('FLASK_ENV')
+print(environment)
 
 if environment == 'Production':
     app.config.from_object('config.ConfigProduction')
