@@ -36,6 +36,7 @@ db.init_app(app)
 cors.init_app(app)
 bcrypt.init_app(app)
 
+#Added comment
 #if environment == 'Development':
 with app.app_context():
     db.create_all()
