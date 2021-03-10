@@ -1,7 +1,6 @@
 import json
 import os
 from datetime import timedelta
-from utils.misc import Json_Key
 
 #config for prod
 class ConfigProduction(object):
