@@ -2,7 +2,7 @@ from main import app, bcrypt, cors
 
 import os
 
-#from models import db
+from models import db
 from models.user import User
 from models.tasks import Tasks
 
