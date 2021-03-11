@@ -26,7 +26,7 @@ def create(**kwargs):
     req = request.get_json(force=True)
     username = req.get('username', None)
     password = req.get('password', None)
-    role = req.get('roles', None)
+    role = req.get('role', None)
 
     user = User.get_user(username)
     if user is None:
