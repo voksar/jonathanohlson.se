@@ -41,7 +41,7 @@ def create(**kwargs):
     else:
         return {'msg': 'User already exists'}, 409
 
-@admin.route('/dashboard/users', methods=['GET'])
+@admin.route('/dashboard', methods=['GET'])
 @admin_required()
 def dashboard_users(**kwargs):
     list_of_users = []
@@ -50,4 +50,5 @@ def dashboard_users(**kwargs):
         dictionary = {"id":user.id, "user":user.username, "roles":user.roles}
         list_of_users.append(dictionary)
     return_users = json.dumps(list_of_users)
-    return return_users, 200
+    json_return = {'count': len(list_of_users), 'users': return_users}
+    return json_return, 200
