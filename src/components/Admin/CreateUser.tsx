@@ -23,6 +23,9 @@ const CreateUser: React.FC = () => {
         }).then(response => {
             if(response.msg){
                 setMsg(response.msg);
+                setUsername('');
+                setPassword('');
+                setRole('');
             }
         }).catch(e => {
             setMsg(`User could not be created, Error ${e.status}`)

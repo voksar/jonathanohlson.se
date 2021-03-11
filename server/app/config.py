@@ -22,7 +22,7 @@ class ConfigDevelopment(object):
     DEVELOPMENT = True
     DEBUG = True
     SECRET_KEY = "DEV123"
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://0:0@192.168.1.150:3306/JONWEBDB_TEST'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://svc.jonwebdbtest:Hasseravelli34#@192.168.1.206:3306/JONWEBDBTEST'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     CORS_HEADERS = 'Content-Type'
 

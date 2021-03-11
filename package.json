@@ -24,10 +24,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-api-windows": "cd Backend/app && ../venv\\Scripts\\activate && flask run --no-debugger",
+    "start-api-windows": "cd server/app && ../venv\\Scripts\\activate && flask run --no-debugger",
     "build": "react-scripts build",
-    "build-api": "cd Backend && py build.py && cd ../build_scripts/ && CopyFiles.exe",
-    "create-dev": "cd Backend && bash create_dev_environment.sh",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
