@@ -29,9 +29,13 @@ class User(db.Model):
         if id is None:
             return false
         user = db.session.query(User).filter(User.id==id).first()
-        db.session.delete(user)
-        db.session.commit()
-        return True
+        if user.username is not "voksar":
+            db.session.delete(user)
+            db.session.commit()
+            return True
+
+        return false
+
     @staticmethod
     def get_user(username = None, id = None):
         if username is None and id is None:
