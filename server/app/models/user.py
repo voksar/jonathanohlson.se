@@ -25,6 +25,14 @@ class User(db.Model):
             return None
 
     @staticmethod
+    def delete_user(id = None):
+        if id is None:
+            return false
+        user = db.session.query(User).filter(User.id==id).first()
+        db.session.delete(user)
+        db.session.commit()
+        return True
+    @staticmethod
     def get_user(username = None, id = None):
         if username is None and id is None:
             return Exception("You need to call with username or id")

@@ -14,6 +14,7 @@ from datetime import timezone
 from app import bcrypt
 from models import db
 from models.user import User
+from models.tasks import Tasks
 import json
 
 from utils.role_required import admin_required
@@ -22,7 +23,7 @@ admin = Blueprint('admin', __name__, url_prefix='/api/admin')
 
 @admin.route('/create', methods=['PUT'])
 @admin_required()
-def create(**kwargs):
+def create():
     req = request.get_json(force=True)
     username = req.get('username', None)
     password = req.get('password', None)
@@ -43,12 +44,23 @@ def create(**kwargs):
 
 @admin.route('/dashboard', methods=['GET'])
 @admin_required()
-def dashboard_users(**kwargs):
+def dashboard_users():
     list_of_users = []
     #List all users
     for user in User.query.all():
-        dictionary = {"id":user.id, "user":user.username, "roles":user.roles}
+        dictionary = {"id":user.id, "username":user.username, "role":user.roles}
         list_of_users.append(dictionary)
     return_users = json.dumps(list_of_users)
     json_return = {'count': len(list_of_users), 'users': return_users}
     return json_return, 200
+
+
+@admin.route('/delete/<int:id>', methods=['DELETE'])
+@admin_required()
+def delete_users(id):
+    tasks = Tasks.get_tasks(id)
+    for task in tasks:
+        print(task.id)
+        Task.delete_task(task.id)
+    User.delete_user(id)
+    return {'msg': 'User deleted'}
