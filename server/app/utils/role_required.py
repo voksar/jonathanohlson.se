@@ -11,7 +11,6 @@ def admin_required():
             username = get_jwt_identity()
             user = User.get_user(username)
             if user and user.roles == 'admin':
-                kwargs['user'] = user
                 return fn(*args, **kwargs)
             else:
                 return {'msg' : 'User is not a admin'}, 401
