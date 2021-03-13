@@ -62,5 +62,5 @@ def delete_users(id):
     for task in tasks:
         print(task.id)
         Task.delete_task(task.id)
-    User.delete_user(id)
-    return {'msg': 'User deleted'}
+    response = User.delete_user(id)
+    return response
