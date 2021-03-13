@@ -66,5 +66,5 @@ def check_valid():
 
 @auth.route('/admin', methods=['GET'])
 @admin_required()
-def check_admin(*args, **kwargs):
+def check_admin():
     return {'msg': 'User is admin!', 'admin': True}, 200

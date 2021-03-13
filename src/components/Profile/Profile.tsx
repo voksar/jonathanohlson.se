@@ -5,9 +5,10 @@ const Profile: React.FC = () => {
     const [username, setUsername] = useState("");
     const [roles, setRoles] = useState("");
     const [id, setId] = useState("");
+    const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        authFetch('/api/user/profile', 'get').then(response => {
+    async function loadProfile(){
+        await authFetch('/api/user/profile', 'get').then(response => {
             if(!response.ok){
                 throw response;
             }
@@ -18,14 +19,18 @@ const Profile: React.FC = () => {
             setId(response.id);
         }).catch(error => {
             console.log(error);
-        })
+        });
+        setLoading(false);
+    }
+    useEffect(() => {
+        loadProfile();
     }, []);
 
     return(
         <>
+        {loading ? "" :
             <h1>{username}</h1>
-            <h1>{id}</h1>
-            <h1>{roles}</h1>
+        }
         </>
     );
 }

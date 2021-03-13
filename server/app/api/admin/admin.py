@@ -60,7 +60,6 @@ def dashboard_users():
 def delete_users(id):
     tasks = Tasks.get_tasks(id)
     for task in tasks:
-        print(task.id)
         Task.delete_task(task.id)
     response = User.delete_user(id)
     return response

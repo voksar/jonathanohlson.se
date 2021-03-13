@@ -19,6 +19,7 @@ const LoginForm : React.FC<Props> = ({handleLogin, logged, setLogged}) => {
     const [password, setPassword] = useState("");
     const [errormsg, setErrormsg] = useState("");
     const [nextPage, setNextPage] = useState("/");
+    const [loading, setLoading] = useState(false);
     const location = useLocation<LocationState>();
     const history = useHistory();
     var msg = "";
@@ -33,8 +34,10 @@ const LoginForm : React.FC<Props> = ({handleLogin, logged, setLogged}) => {
         } catch {
             setNextPage("/");
         }
-        
-    }, [logged])
+        return () => {
+            setLoading(true);
+        }
+    }, [])
 
     
     async function handleSubmit(e : React.FormEvent){
@@ -46,9 +49,11 @@ const LoginForm : React.FC<Props> = ({handleLogin, logged, setLogged}) => {
             setUsername: setUsername
         }
         msg = await handleLogin(e, history, setLogged, user, nextPage);
-        //setErrormsg(msg);
+        setErrormsg(msg);
     }  
     return (
+        <>
+        {loading ? "" : 
         <div className="div">
             <div className="wrapper fadeInDown">
                 <div id="formContent">
@@ -66,6 +71,8 @@ const LoginForm : React.FC<Props> = ({handleLogin, logged, setLogged}) => {
                 </div>
             </div>
         </div>
+        }
+        </>
     );
 }
 export default LoginForm;
