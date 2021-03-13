@@ -46,7 +46,7 @@ export async function handleLogin(e: React.FormEvent, history: any, setLogged: a
             user.setUsername("");
             user.setPassword("");
             setLogged(true);
-            
+            console.log(nextPage);
             history.push(nextPage);
         }
         
