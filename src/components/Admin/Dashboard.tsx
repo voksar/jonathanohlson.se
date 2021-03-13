@@ -14,6 +14,10 @@ import Paper from '@material-ui/core/Paper';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+import CreateUser from './CreateUser';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import { setEmitFlags } from 'typescript';
+
 
 //consts
 const useStyles = makeStyles({
@@ -36,6 +40,12 @@ const useStyles = makeStyles({
     },
     edit: {
         cursor: 'pointer',
+    },
+    addIcon: {
+        transform: 'scale(1.2)',
+        display: 'inline-block',
+        position: 'relative',
+        cursor: 'pointer'
     }
 });
 
@@ -55,6 +65,7 @@ const Dashboard : React.FC = () => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [msg, setMsg] = useState<string>("");
+    const [show, isShow] = useState<boolean>(false);
     const classes = useStyles();
     
     async function deleteUser(id: number){
@@ -68,7 +79,9 @@ const Dashboard : React.FC = () => {
                 setMsg(response.msg);
                 setUsers(users.filter((user: User) => user.id !== id));
             }
-        }).catch(e => console.log(e));
+        }).catch(e => {
+            setMsg(e.statusText);
+        });
     }
 
     async function get_dashboard(){
@@ -98,7 +111,8 @@ const Dashboard : React.FC = () => {
         <div>
             {!loading ? 
             <TableContainer component={Paper}>
-            <h2>Dashboard</h2>
+            <h2 style={{'paddingRight': 20}}>Dashboard</h2>
+            <span onClick={() => isShow(!show)}><PersonAddIcon className={classes.addIcon}/></span>
             <br></br><p>{msg}</p>
             <Table className={classes.table} aria-label="simple table">
               <TableHead>

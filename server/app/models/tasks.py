@@ -32,7 +32,6 @@ class Tasks(db.Model):
         task = db.session.query(Tasks).filter(Tasks.id==task_id).first()
         db.session.delete(task)
         db.session.commit()
-        return True
     
     @staticmethod
     def add_task(text, username):

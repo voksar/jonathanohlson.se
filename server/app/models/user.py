@@ -29,12 +29,15 @@ class User(db.Model):
         if id is None:
             return false
         user = db.session.query(User).filter(User.id==id).first()
-        if user.username is not "voksar":
+        if user.username != "voksar":
             db.session.delete(user)
             db.session.commit()
-            return True
-
-        return false
+            response = {'msg':f'User {user.username} deleted'}, 200
+            return response
+        else:
+            response = {'msg': 'Master account cant be deleted'}, 401
+            return response
+        
 
     @staticmethod
     def get_user(username = None, id = None):
