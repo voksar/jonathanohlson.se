@@ -83,7 +83,7 @@ interface Props {
 }
 
 
-const MainNavBar : React.FC<Props> = ({logged, handleLogout, setLogged, isAdmin}) => {
+const NavigationBar : React.FC<Props> = ({logged, handleLogout, setLogged, isAdmin}) => {
 
   const classes = useStyles();
   //const theme = useTheme();
@@ -176,6 +176,6 @@ const MainNavBar : React.FC<Props> = ({logged, handleLogout, setLogged, isAdmin}
         </div>
       </>
     );
-  }
+}
   
-  export default MainNavBar;
+export default NavigationBar;
