@@ -114,8 +114,8 @@ const MainNavBar : React.FC<Props> = ({logged, handleLogout, setLogged, isAdmin}
               )}>
               <MenuIcon />
               </IconButton>
-              <Typography variant="h6" noWrap >
-                <Tab label='jonathanohlson' className={classes.mainName} component={NavLink}  to='/'/>
+              <Typography variant="h6" noWrap component={NavLink} to="/" style={{'color': 'white'}}>
+                jonathanohlson
               </Typography>
           </Toolbar>
         </AppBar>
@@ -144,7 +144,7 @@ const MainNavBar : React.FC<Props> = ({logged, handleLogout, setLogged, isAdmin}
               <Divider />
               <List>
                 {SideBarNonLoggedInList.map((item) => (
-                  <ListItem button key={item.text} component={NavLink} to="/Hasse">
+                  <ListItem button key={item.text} component={NavLink} to="/">
                     <ListItemIcon>{item.icon}</ListItemIcon>
                     <ListItemText primary={item.text} />
                   </ListItem>
