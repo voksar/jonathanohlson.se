@@ -3,8 +3,8 @@ import { authFetch } from '../../utils/misc/authFetch';
 
 const Profile: React.FC = () => {
     const [username, setUsername] = useState("");
-    const [roles, setRoles] = useState("");
-    const [id, setId] = useState("");
+    const [, setRoles] = useState("");
+    const [, setId] = useState("");
     const [loading, setLoading] = useState(true);
 
     async function loadProfile(){

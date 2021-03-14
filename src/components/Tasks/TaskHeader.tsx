@@ -4,7 +4,6 @@ import Tasks from './Tasks';
 import React, { useEffect, useState } from 'react';
 import AddTask from './AddTask';
 import { authFetch } from '../../utils/misc/authFetch';
-import { responsiveFontSizes } from '@material-ui/core';
 
 interface ITasks {
     id : number,

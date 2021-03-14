@@ -14,9 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-import CreateUser from './CreateUser';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import { setEmitFlags } from 'typescript';
 
 
 //consts
@@ -61,7 +59,7 @@ interface User {
 }
 
 const Dashboard : React.FC = () => {
-    const [count, setCount] = useState<number>(0);
+    const [, setCount] = useState<number>(0);
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [msg, setMsg] = useState<string>("");

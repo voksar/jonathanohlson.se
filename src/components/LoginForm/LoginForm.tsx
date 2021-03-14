@@ -37,6 +37,7 @@ const LoginForm : React.FC<Props> = ({handleLogin, logged, setLogged}) => {
         return () => {
             setLoading(true);
         }
+    // eslint-disable-next-line
     }, [])
 
     
