@@ -55,6 +55,7 @@ def dashboard_users():
     return json_return, 200
 
 
+#Deletes a user and all its tasks
 @admin.route('/delete/<int:id>', methods=['DELETE'])
 @admin_required()
 def delete_users(id):

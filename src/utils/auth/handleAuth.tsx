@@ -18,7 +18,7 @@ export async function handleLogout(e : React.FormEvent, history: any, setLogged:
             throw response;
         }
         return response.json();
-    }).then(response => {
+    }).then(() => {
         setLogged(false);
     }).catch(e => {
         console.log(e);
