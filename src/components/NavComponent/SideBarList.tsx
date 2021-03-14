@@ -2,7 +2,6 @@ import React from 'react';
 import PersonIcon from '@material-ui/icons/Person';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import PeopleIcon from '@material-ui/icons/People';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import DashboardIcon from '@material-ui/icons/Dashboard';

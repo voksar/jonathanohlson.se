@@ -6,7 +6,7 @@ import { SideBarLoggedInList, SideBarNonLoggedInList, SideBarLogin, SideBarLogou
 
 
 import clsx from 'clsx';
-import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -16,7 +16,6 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Tab from '@material-ui/core/Tab';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -87,13 +86,13 @@ interface Props {
 const MainNavBar : React.FC<Props> = ({logged, handleLogout, setLogged, isAdmin}) => {
 
   const classes = useStyles();
-  const theme = useTheme();
+  //const theme = useTheme();
   const [open, setOpen] = useState(false);
 
   const handleDrawerClick = () => {
     setOpen(!open);
   };
-  const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
+  //const preventDefault = (event: React.SyntheticEvent) => event.preventDefault();
 
 
   const history = useHistory()
