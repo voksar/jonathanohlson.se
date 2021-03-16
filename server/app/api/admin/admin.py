@@ -64,3 +64,11 @@ def delete_users(id):
         Task.delete_task(task.id)
     response = User.delete_user(id)
     return response
+
+
+@admin.route('/edit', methods=['PUT'])
+@admin_required()
+def edit_user():
+    req = request.get_json(force=True)
+    username = req.get('username', None)
+    return {'msg':'yes'}, 200

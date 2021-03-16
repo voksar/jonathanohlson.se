@@ -81,6 +81,19 @@ const Dashboard : React.FC = () => {
             setMsg(e.statusText);
         });
     }
+    async function editUser(username: string, password?: string){
+        await authFetch('/api/admin/edit', 'PUT').then(response => {
+            if (!response.ok){
+                throw response;
+            }
+            return response.json();
+        }).then(resp => {
+            if(resp.msg){
+                setMsg(resp.msg);
+            }
+        });
+    }
+
 
     async function get_dashboard(){
         await authFetch('/api/admin/dashboard', 'GET').then(response => {
