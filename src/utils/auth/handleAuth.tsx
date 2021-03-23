@@ -36,6 +36,7 @@ export async function handleLogin(e: React.FormEvent, history: any, setLogged: a
             history.push(nextPage);
         }
     }).catch(e => {
+        user.setPassword("");
         return e.message;
     })
     return data;
