@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { authFetch } from '../../utils/misc/authFetch';
+//import { authFetch } from '../../utils/misc/authFetch';
+import { apiFetch } from '../../utils/fetch/apiFetch';
 
 //Table imports
 import { makeStyles } from '@material-ui/core/styles';
@@ -49,7 +50,11 @@ const useStyles = makeStyles({
 
 
 
-
+interface Response {
+    msg?: string,
+    users?: [] | any,
+    count?: number
+}
 
 
 interface User {
@@ -59,7 +64,7 @@ interface User {
 }
 
 const Dashboard : React.FC = () => {
-    const [, setCount] = useState<number>(0);
+    const [count, setCount] = useState<number>(0);
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [msg, setMsg] = useState<string>("");
@@ -67,12 +72,7 @@ const Dashboard : React.FC = () => {
     const classes = useStyles();
     
     async function deleteUser(id: number){
-        await authFetch(`/api/admin/delete/${id}`, 'DELETE').then(response => {
-            if(!response.ok){
-                throw response;
-            }
-            return response.json();
-        }).then(response => {
+        await apiFetch<Response>(`/api/admin/delete/${id}`, 'DELETE').then(response => {
             if(response.msg){
                 setMsg(response.msg);
                 setUsers(users.filter((user: User) => user.id !== id));
@@ -82,12 +82,7 @@ const Dashboard : React.FC = () => {
         });
     }
     async function editUser(username: string, password?: string){
-        await authFetch('/api/admin/edit', 'PUT').then(response => {
-            if (!response.ok){
-                throw response;
-            }
-            return response.json();
-        }).then(resp => {
+        await apiFetch<Response>('/api/admin/edit', 'PUT').then(resp => {
             if(resp.msg){
                 setMsg(resp.msg);
             }
@@ -96,12 +91,7 @@ const Dashboard : React.FC = () => {
 
 
     async function get_dashboard(){
-        await authFetch('/api/admin/dashboard', 'GET').then(response => {
-            if(!response.ok){
-                throw response;
-            }
-            return response.json();
-        }).then(response => {
+        await apiFetch<Response>('/api/admin/dashboard', 'GET').then(response => {
             if(response.users){
                 var json_users = JSON.parse(response.users);
                 setUsers(json_users);
@@ -110,7 +100,6 @@ const Dashboard : React.FC = () => {
                 setCount(response.count);
             }
         }).catch(error => console.log(error));
-
         setLoading(false);
     }
 
@@ -122,7 +111,7 @@ const Dashboard : React.FC = () => {
         <div>
             {!loading ? 
             <TableContainer component={Paper}>
-            <h2 style={{'paddingRight': 20}}>Dashboard</h2>
+            <h2 style={{'paddingRight': 20}}>Dashboard {count}</h2>
             <span onClick={() => isShow(!show)}><PersonAddIcon className={classes.addIcon}/></span>
             <br></br><p>{msg}</p>
             <Table className={classes.table} aria-label="simple table">
