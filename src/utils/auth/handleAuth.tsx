@@ -14,18 +14,11 @@ interface Response {
 
 export async function handleLogout(e : React.FormEvent, history: any, setLogged: any){
     e.preventDefault();
-    const fetchOptions = {
-        method: 'GET',
-        withCredentials: 'include'
-    };
-    await fetch('/api/auth/logout', fetchOptions).then(response => {
-        if(!response.ok){
-            throw response;
-        }
-        return response.json();
-    }).then(() => {
+    await apiFetch('/api/auth/logout', 'GET').then(() => {
         setLogged(false);
     }).catch(e => {
+        console.log(e);
+        setLogged(false);
     })
     history.push("/");
 }
@@ -34,12 +27,7 @@ export async function handleLogin(e: React.FormEvent, history: any, setLogged: a
     let opts = {
         'username':user.username,
         'password':user.password
-    }
-    const fetchOptions = {
-        method: 'post',
-        body: JSON.stringify(opts),
-        withCredentials: 'include'
-    };
+    }   
     const data = apiFetch<Response>('/api/auth/login', 'POST', opts).then(resp => {
         if(resp.msg){
             user.setUsername("");
