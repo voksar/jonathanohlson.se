@@ -140,6 +140,7 @@ const NavigationBar : React.FC<Props> = ({logged, handleLogout, setLogged, isAdm
                 </ListItem>
                 }
               </List>
+              {!logged && <Divider />}
               {/*<Divider />
               <List>
                 {SideBarNonLoggedInList.map((item) => (
