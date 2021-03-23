@@ -1,10 +1,15 @@
 import React from "react";
+import { apiFetch } from '../fetch/apiFetch';
 
 interface User {
     username: string,
     password: string,
     setPassword: any,
     setUsername: any
+}
+
+interface Response {
+    msg: string
 }
 
 export async function handleLogout(e : React.FormEvent, history: any, setLogged: any){
@@ -21,7 +26,6 @@ export async function handleLogout(e : React.FormEvent, history: any, setLogged:
     }).then(() => {
         setLogged(false);
     }).catch(e => {
-        console.log(e);
     })
     history.push("/");
 }
@@ -36,24 +40,15 @@ export async function handleLogin(e: React.FormEvent, history: any, setLogged: a
         body: JSON.stringify(opts),
         withCredentials: 'include'
     };
-    const data = await fetch('/api/auth/login', fetchOptions).then(response => {
-        if(!response.ok){
-            throw response;
-        }
-        return response.json();
-    }).then(response => {
-        if(response.msg){
+    const data = apiFetch<Response>('/api/auth/login', 'POST', opts).then(resp => {
+        if(resp.msg){
             user.setUsername("");
             user.setPassword("");
             setLogged(true);
             history.push(nextPage);
         }
-        
     }).catch(e => {
-        
-        if(e.statusText === "UNAUTHORIZED"){
-            return "Wrong username or password";
-        }
-    });
+        return e.message;
+    })
     return data;
 }
