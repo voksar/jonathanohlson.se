@@ -149,7 +149,7 @@ const NavigationBar : React.FC<Props> = ({logged, handleLogout, setLogged, isAdm
                   </ListItem>
                 ))}
               </List>
-              <Divider />
+              {logged && <Divider />}
               <List>
               {logged ? SideBarLoggedInList.map((item)  => (
                 <ListItem button key={item.text} component={NavLink} to={item.path}>
@@ -159,7 +159,7 @@ const NavigationBar : React.FC<Props> = ({logged, handleLogout, setLogged, isAdm
               ))
                  : ""}
               </List>
-              <Divider />
+              {logged && isAdmin && <Divider />}
               <List>
               {logged && isAdmin ? SideBarAdminTools.map((item)  => (
                 <ListItem button key={item.text} component={NavLink} to={item.path}>
