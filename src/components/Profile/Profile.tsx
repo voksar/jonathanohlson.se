@@ -1,24 +1,24 @@
 import { useEffect, useState } from 'react';
 import { authFetch } from '../../utils/misc/authFetch';
+import { apiFetch } from '../../utils/fetch/apiFetch';
+
+interface Response {
+    username: string,
+    roles: string,
+    id: number
+}
 
 const Profile: React.FC = () => {
     const [username, setUsername] = useState("");
     const [, setRoles] = useState("");
-    const [, setId] = useState("");
+    const [, setId] = useState<number>();
     const [loading, setLoading] = useState(true);
 
     async function loadProfile(){
-        await authFetch('/api/user/profile', 'get').then(response => {
-            if(!response.ok){
-                throw response;
-            }
-            return response.json();
-        }).then(response => {
+        await apiFetch<Response>('/api/user/profile', 'GET').then(response => {
             setUsername(response.username);
             setRoles(response.roles);
             setId(response.id);
-        }).catch(error => {
-            console.log(error);
         });
         setLoading(false);
     }
