@@ -76,6 +76,7 @@ const Dashboard : React.FC = () => {
             if(response.msg){
                 setMsg(response.msg);
                 setUsers(users.filter((user: User) => user.id !== id));
+                setCount(count-1);
             }
         }).catch(e => {
             setMsg(e.statusText);
