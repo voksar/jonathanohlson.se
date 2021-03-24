@@ -62,7 +62,7 @@ const TaskHeader : React.FC = () => {
                     <Button text={showAddTask ? 'Close': 'Add'} onClick={() => setShowAddTask(!showAddTask)}/>
                 </header>
                 {showAddTask && <AddTask onAdd={addTask}/>}
-                {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask}/> : 'No tasks right now!'}
+                {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask}/> : <p>'No tasks right now!'</p>}
             </div> 
         </div>
         
