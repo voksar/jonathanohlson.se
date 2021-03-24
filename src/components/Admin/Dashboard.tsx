@@ -91,7 +91,7 @@ const Dashboard : React.FC = () => {
     }
 
 
-    async function get_dashboard(){
+    async function getDashboard(){
         await apiFetch<Response>('/api/admin/dashboard', 'GET').then(response => {
             if(response.users){
                 var json_users = JSON.parse(response.users);
@@ -105,7 +105,7 @@ const Dashboard : React.FC = () => {
     }
 
     useEffect(() => {
-        get_dashboard();
+        getDashboard();
     }, []);
 
     return (

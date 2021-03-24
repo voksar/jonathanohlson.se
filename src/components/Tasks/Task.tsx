@@ -1,17 +1,17 @@
 import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 
-interface ITasks {
+interface Tasks {
     id : number,
     text : string,
     created : string
 }
-interface ITask {
-    task : ITasks,
+interface Task {
+    task : Tasks,
     onDelete: (id: number) => any,
 }
 
-const Task : React.FC<ITask> = ({ task, onDelete }) => {
+const Task : React.FC<Task> = ({ task, onDelete }) => {
     return (
         <div className='task'>
             <h3>{task.text} <FaTimes onClick={() => onDelete(task.id)} style={{color:'red', cursor: 'pointer'}}/></h3>

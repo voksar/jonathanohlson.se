@@ -6,7 +6,7 @@ import AddTask from './AddTask';
 import { authFetch } from '../../utils/misc/authFetch';
 import { apiFetch } from '../../utils/fetch/apiFetch';
 
-interface ITasks {
+interface Tasks {
     id : number,
     text : string,
     created : string
@@ -14,10 +14,10 @@ interface ITasks {
 
 const TaskHeader : React.FC = () => {
     const [showAddTask, setShowAddTask] = useState<boolean>(false);
-    const [tasks, setTasks] = useState<ITasks[]>([]);
+    const [tasks, setTasks] = useState<Tasks[]>([]);
 
     useEffect(() => {
-        apiFetch<ITasks []>('/api/user/tasks', 'GET').then(response => {
+        apiFetch<Tasks []>('/api/user/tasks', 'GET').then(response => {
             if(response){
                 setTasks(response);
             }
@@ -27,9 +27,9 @@ const TaskHeader : React.FC = () => {
     const addTask = async (text: string) => {
         let opts = {'text': text}
         
-        await apiFetch<ITasks>('/api/user/tasks/add', 'POST', opts).then(response => {
+        await apiFetch<Tasks>('/api/user/tasks/add', 'POST', opts).then(response => {
             if(response){
-                const newTask: ITasks = { id: response.id, text: text, created: response.created }
+                const newTask: Tasks = { id: response.id, text: text, created: response.created }
                 setTasks([...tasks, newTask]);
             }
         }).catch(e => console.log(e));
@@ -37,7 +37,7 @@ const TaskHeader : React.FC = () => {
 
     const deleteTask = async (id: number) => {
         await apiFetch(`/api/user/tasks/delete/${id}`, 'DELETE').then(response => {
-            setTasks(tasks.filter((task: ITasks) => task.id !== id));
+            setTasks(tasks.filter((task: Tasks) => task.id !== id));
         }).catch(e => console.log(e));
         
     }
