@@ -100,7 +100,7 @@ const Dashboard : React.FC = () => {
             if(response.count){
                 setCount(response.count);
             }
-        }).catch(error => console.log(error));
+        }).catch(error => setMsg(error.message));
         setLoading(false);
     }
 
