@@ -111,7 +111,7 @@ const Dashboard : React.FC = () => {
         <div>
             {!loading ? 
             <TableContainer component={Paper}>
-            <h2 style={{'paddingRight': 20}}>Dashboard {count}</h2>
+            <h2 style={{'paddingRight': 20}}>Dashboard ({count})</h2>
             <span onClick={() => isShow(!show)}><PersonAddIcon className={classes.addIcon}/></span>
             <br></br><p>{msg}</p>
             <Table className={classes.table} aria-label="simple table">
