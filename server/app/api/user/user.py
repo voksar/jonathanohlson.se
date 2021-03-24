@@ -73,4 +73,4 @@ def add_task():
     text = req.get('text', None)
     user = get_jwt_identity()
     resp = Tasks.add_task(text, user)
-    return resp,
+    return resp
