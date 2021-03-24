@@ -56,19 +56,15 @@ def tasks():
     username = get_jwt_identity()
     user = User.get_user(username=username)
 
-    tasks = Tasks.get_tasks(user.id)
+    resp = Tasks.get_tasks(user.id)
     
-    list_of_tasks = []
-    for task in tasks:
-        dictionary = {'id': task.id, 'text': task.text, 'created': task.created}
-        list_of_tasks.append(dictionary)
-    return jsonify(list_of_tasks)
+    return resp
 
 @user.route('/tasks/delete/<int:id>', methods=['DELETE'])
 @jwt_required()
 def delete_task(id):
-    Tasks.delete_task(id)
-    return {'msg': 'Task deleted successfully'}
+    resp = Tasks.delete_task(id)
+    return resp
 
 @user.route('/tasks/add', methods=['POST'])
 @jwt_required()
@@ -77,4 +73,4 @@ def add_task():
     text = req.get('text', None)
     user = get_jwt_identity()
     resp = Tasks.add_task(text, user)
-    return resp, 200
+    return resp,
