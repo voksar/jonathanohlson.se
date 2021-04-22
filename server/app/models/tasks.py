@@ -27,12 +27,14 @@ class Tasks(db.Model):
     def get_tasks(id):
         try:
             tasks = Tasks.query.filter_by(user_id=id)
-            list_of_tasks = []
+            """list_of_tasks = []
             for task in tasks:
                 dictionary = {'id': task.id, 'text': task.text, 'created': task.created}
                 list_of_tasks.append(dictionary)
             
-            return jsonify(list_of_tasks), 200
+            return jsonify(list_of_tasks), 200"""
+
+            return tasks
         except SQLAlchemyError as e:
             return {'msg': e._message}, 500
     

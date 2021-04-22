@@ -64,7 +64,7 @@ function App() {
               )}/>
 
             {/*Logged in routes*/}
-            <PrivateRoute exactPath path="/profile" component={Profile} authenticated={logged}/>
+            <Route exact path="/profile" component={Profile}/>
             <PrivateRoute exactPath path="/tasks" component={TaskHeader} authenticated={logged} /> 
 
             {/*Admin routes, admin authentication required*/}
