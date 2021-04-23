@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { apiFetch } from '../../utils/fetch/apiFetch';
 
-import SyncLoader from 'react-spinners/SyncLoader';
+import SyncLoader from '../Loader/SyncLoader';
 
 interface Response {
     username: string,
@@ -19,7 +19,6 @@ const Profile: React.FC = () => {
     const [, setId] = useState<number>();
     const [loading, setLoading] = useState(true);
 
-    const [color, setColor] = useState<string>("#1976d2");
 
     async function loadProfile(){
         await apiFetch<Response>('/api/user/profile', 'GET').then(response => {
@@ -36,7 +35,7 @@ const Profile: React.FC = () => {
 
     return(
         <>
-        {loading ? <SyncLoader size={15} margin={2} color={color}/> :
+        {loading ? <SyncLoader /> :
             <h1>{username}</h1>
         }
         </>

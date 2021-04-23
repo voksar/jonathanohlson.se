@@ -18,7 +18,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 
-import SyncLoader from 'react-spinners/SyncLoader';
+import SyncLoader from '../Loader/SyncLoader';
 
 
 //consts
@@ -74,7 +74,6 @@ const Dashboard : React.FC = () => {
     const [show, isShow] = useState<boolean>(false);
     const classes = useStyles();
 
-    const [color, setColor] = useState<string>("#1976d2");
     
     async function deleteUser(id: number){
         await apiFetch<Response>(`/api/admin/delete/${id}`, 'DELETE').then(response => {
@@ -152,7 +151,7 @@ const Dashboard : React.FC = () => {
               </TableBody>
             </Table>
           </TableContainer> 
-          : <SyncLoader size={15} margin={2} color={color}/> }
+          : <SyncLoader /> }
 
         </div>
     );
