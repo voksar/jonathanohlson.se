@@ -17,7 +17,7 @@ const CreateUser: React.FC = () => {
             'password':password,
             'role':role
         }
-        await authFetch('/api/admin/create', 'PUT', opts).then(response => {
+        await authFetch('/api/admin/create', 'POST', opts).then(response => {
             if(!response.ok){ throw response ;}
             return response.json();
         }).then(response => {
