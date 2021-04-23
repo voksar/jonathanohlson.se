@@ -18,10 +18,11 @@ from models.tasks import Tasks
 import json
 
 from utils.role_required import admin_required
+from utils.return_codes import ok
 
 admin = Blueprint('admin', __name__, url_prefix='/api/admin')
 
-@admin.route('/create', methods=['PUT'])
+@admin.route('/create', methods=['POST'])
 @admin_required()
 def create():
     req = request.get_json(force=True)
@@ -38,7 +39,9 @@ def create():
               roles=role
                 ))
         db.session.commit()
-        return {'msg':f'User {username} created'}, 200
+        resp_json = {'msg':f'User {username} created'}
+
+        return ok(resp_json)
     else:
         return {'msg': 'User already exists'}, 409
 
@@ -62,6 +65,8 @@ def delete_users(id):
     tasks = Tasks.get_tasks(id)
     for task in tasks:
         Tasks.delete_task(task.id)
+
+        
     response = User.delete_user(id)
     return response
 

@@ -2,6 +2,8 @@ from functools import wraps
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from models.user import User
 
+from .return_codes import not_authorized
+
 
 def admin_required():
     def wrapper(fn):
@@ -13,7 +15,8 @@ def admin_required():
             if user and user.roles == 'admin':
                 return fn(*args, **kwargs)
             else:
-                return {'msg' : 'User is not a admin'}, 401
+                msg = {'msg' : 'User is not allowed'}
+                return not_authorized(msg)
         return decorator
     return wrapper
             
