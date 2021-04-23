@@ -57,7 +57,7 @@ def tasks():
     user = User.get_user(username=username)
 
     resp = Tasks.get_tasks(user.id)
-    
+
     return resp
 
 @user.route('/tasks/delete/<int:id>', methods=['DELETE'])
