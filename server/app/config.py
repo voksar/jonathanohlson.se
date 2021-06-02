@@ -8,7 +8,7 @@ class ConfigProduction(object):
     DEVELOPMENT = False
     DEBUG = False
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}:3306/{}'.format(os.environ.get('DB_USERNAME'), os.environ.get('DB_PASSWORD'), os.environ.get('DB_HOST'), os.environ.get('DB_INSTANCE'))
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{}:{}@{}/{}'.format(os.environ.get('DB_USERNAME'), os.environ.get('DB_PASSWORD'), os.environ.get('DB_HOST'), os.environ.get('DB_INSTANCE'))
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     
