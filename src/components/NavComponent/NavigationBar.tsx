@@ -1,8 +1,8 @@
 import { useState } from 'react';
 //import '../CSS/Misc.css';
-import { useHistory, NavLink } from 'react-router-dom';
+import { useHistory, NavLink, Link } from 'react-router-dom';
 
-import { SideBarLoggedInList, SideBarNonLoggedInList, SideBarLogin, SideBarLogout, SideBarAdminTools, AlwaysShowed } from './SideBarList';
+import { SideBarLoggedInList, SideBarNonLoggedInList, SideBarLogin, SideBarLogout, SideBarAdminTools, AlwaysShowed, BottomSideBar } from './SideBarList';
 
 
 import clsx from 'clsx';
@@ -72,6 +72,13 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       padding: theme.spacing(3),
     },
+    bottomPush: {
+      position: "fixed",
+      bottom: 0,
+      textAlign: "center",
+      paddingBottom: 10,
+      width: drawerWidth,
+  },
   }),
 );
 
@@ -177,6 +184,17 @@ const NavigationBar : React.FC<Props> = ({logged, handleLogout, setLogged, isAdm
               ))
                  : ""}
               </List>
+              { BottomSideBar.length > 0 && <Divider /> }
+              <div className={classes.bottomPush}>
+                    {
+                      BottomSideBar.length > 0 ? BottomSideBar.map((item)  => (
+                        <ListItem button key={item.text} component="a" href={item.path}>
+                          <ListItemIcon>{item.icon}</ListItemIcon>
+                          <ListItemText classes={{primary: classes.listItemText}} primary={item.text}/>
+                        </ListItem>))
+                        : ""
+                    }
+              </div>
             </div>
           </Drawer>
           <main className={classes.content}>
