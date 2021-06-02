@@ -30,7 +30,7 @@ class Tasks(db.Model):
             
             return tasks
         except SQLAlchemyError as e:
-            return {'msg': e._message}, 500
+            return e._message
     
     @staticmethod
     def delete_task(task_id):

@@ -17,6 +17,8 @@ from models import db
 from models.user import User
 from models.tasks import Tasks
 
+from utils.return_codes import ok
+
 
 user = Blueprint('user', __name__, url_prefix='/api/user')
 
@@ -58,7 +60,7 @@ def tasks():
 
     resp = Tasks.get_tasks(user.id)
 
-    return resp
+    return {'ok':'ok'}
 
 @user.route('/tasks/delete/<int:id>', methods=['DELETE'])
 @jwt_required()
