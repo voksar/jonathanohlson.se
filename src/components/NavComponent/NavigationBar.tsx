@@ -2,7 +2,7 @@ import { useState } from 'react';
 //import '../CSS/Misc.css';
 import { useHistory, NavLink } from 'react-router-dom';
 
-import { SideBarLoggedInList, SideBarNonLoggedInList, SideBarLogin, SideBarLogout, SideBarAdminTools } from './SideBarList';
+import { SideBarLoggedInList, SideBarNonLoggedInList, SideBarLogin, SideBarLogout, SideBarAdminTools, AlwaysShowed } from './SideBarList';
 
 
 import clsx from 'clsx';
@@ -113,9 +113,6 @@ const NavigationBar : React.FC<Props> = ({logged, handleLogout, setLogged, isAdm
               )}>
               <MenuIcon />
               </IconButton>
-              <Typography variant="h6" noWrap component={NavLink} to="/" style={{'color': 'white'}}>
-                jonathanohlson
-              </Typography>
           </Toolbar>
         </AppBar>
           <Drawer
@@ -127,6 +124,16 @@ const NavigationBar : React.FC<Props> = ({logged, handleLogout, setLogged, isAdm
             }}>
             <Toolbar />
             <div className={classes.drawerContainer}>
+            <List>
+              {
+                AlwaysShowed.map((item) => (
+                  <ListItem button key={item.text} component={NavLink} to={item.path} >
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText classes={{primary: classes.listItemText}} primary={item.text} />
+                  </ListItem>
+                ))
+              }
+            </List>
             <List>
                 {logged ? 
                   <ListItem button key={SideBarLogout.text} onClick={(e) => handleLogout(e, history, setLogged)}>

@@ -5,6 +5,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import HomeIcon from '@material-ui/icons/Home';
 
 type Item = {
     text: string,
@@ -28,6 +29,13 @@ export const SideBarLogout : Item = {
     loggedin: true,
 }
 
+export const AlwaysShowed: Item[] = [
+    {
+        text: 'Home',
+        path: '/',
+        icon: <HomeIcon />,
+    }
+]
 
 export const SideBarNonLoggedInList: Item[] = [
     
