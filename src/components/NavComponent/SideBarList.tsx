@@ -6,6 +6,7 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import HomeIcon from '@material-ui/icons/Home';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 type Item = {
     text: string,
@@ -67,5 +68,13 @@ export const SideBarAdminTools: Item[] = [
         path: '/admin/Dashboard',
         icon: <DashboardIcon />,
         roles: 'admin'
+    }
+]
+
+export const BottomSideBar: Item[] = [
+    {
+        text: 'GitHub',
+        path: 'https://Github.com/voksar',
+        icon: <GitHubIcon />
     }
 ]
