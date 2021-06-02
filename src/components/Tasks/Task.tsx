@@ -6,12 +6,12 @@ interface Tasks {
     text : string,
     created : string
 }
-interface Task {
+interface ITask {
     task : Tasks,
     onDelete: (id: number) => any,
 }
 
-const Task : React.FC<Task> = ({ task, onDelete }) => {
+const Task : React.FC<ITask> = ({ task, onDelete }) => {
     return (
         <div className='task'>
             <h3>{task.text} <FaTimes onClick={() => onDelete(task.id)} style={{color:'red', cursor: 'pointer'}}/></h3>
